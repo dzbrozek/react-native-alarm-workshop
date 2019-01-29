@@ -1,9 +1,13 @@
 import {createAppContainer, createStackNavigator} from "react-navigation";
-import Alarm from "./screens/Alarm";
+import AlarmDetails from "./screens/AlarmDetails";
+import AlarmList from "./screens/AlarmList";
+import AddAlarm from "./screens/AddAlarm";
 
 
 const AppNavigator = createStackNavigator({
-  Alarm
+  AlarmList,
+  AlarmDetails,
+  AddAlarm
 }, {
   defaultNavigationOptions: {
     headerTitleStyle: {
@@ -14,7 +18,7 @@ const AppNavigator = createStackNavigator({
     headerStyle: {
       backgroundColor: 'green',
     },
-    headerTintColor: 'red',
+    headerTintColor: 'white',
   },
 });
 

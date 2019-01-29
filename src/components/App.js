@@ -1,9 +1,14 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
 import AppNavigation from '../navigation';
+import { Provider as MobxProvider } from 'mobx-react/native';
+import stores from '../stores';
 
 export default class App extends React.Component {
   render() {
-    return <AppNavigation/>;
+    return (
+      <MobxProvider {...stores}>
+        <AppNavigation persistenceKey={__DEV__ ? 'NavigationStateDEV' : null}/>
+      </MobxProvider>
+    );
   }
 }

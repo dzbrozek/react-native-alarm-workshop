@@ -3,12 +3,13 @@ import { Text, View, StyleSheet, Image } from 'react-native';
 
 export default class AlarmHeader extends React.Component {
   render() {
+    const { title, image } = this.props;
     return (
       <View style={styles.container}>
         <View style={styles.imageContainer}>
-          <Image source={require('../../assets/alarm.png')} style={styles.image}/>
+          <Image source={image} style={styles.image}/>
         </View>
-        <Text style={styles.title}>Home</Text>
+        <Text style={styles.title}>{title}</Text>
       </View>
     )
   }

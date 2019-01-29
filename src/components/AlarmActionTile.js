@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, TouchableHighlight } from 'react-native';
+import { Text, View, StyleSheet, TouchableHighlight, TouchableOpacity } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { SMS } from 'expo';
 
@@ -13,14 +13,18 @@ class AlarmActionTile extends React.Component {
     const { icon, title, disabled } = this.props;
     return (
       <View style={styles.container}>
-        <TouchableHighlight onPress={this.sendSMS} style={[styles.tile, disabled && {borderColor: 'grey'}]} underlayColor="lightgreen" disabled={disabled}>
+        <TouchableOpacity
+          onPress={this.sendSMS}
+          style={[styles.tile, disabled && {borderColor: 'grey'}]}
+          disabled={disabled}
+        >
           <View style={styles.content}>
             <View style={[styles.iconContainer, disabled && {backgroundColor: 'grey'}]}>
               <FontAwesome name={icon} size={30} style={styles.icon}/>
             </View>
             <Text numberOfLines={1} style={[styles.title, disabled && {color: 'grey'}]}>{title}</Text>
           </View>
-        </TouchableHighlight>
+        </TouchableOpacity>
       </View>
     )
   }
@@ -34,7 +38,7 @@ const styles = StyleSheet.create({
   tile: {
     borderWidth: 1,
     borderColor: 'green',
-    borderRadius: 4,
+    borderRadius: 6,
     padding: 6,
     justifyContent: 'center',
     alignItems: 'center',

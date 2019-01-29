@@ -36,8 +36,8 @@ export class AlarmStore {
   }
 
   @action
-  async removeAlarm(phoneNumber) {
-    const alarms = this.alarms.filter(alarm => alarm.phoneNumber !== phoneNumber);
+  async removeAlarm(alarmId) {
+    const alarms = this.alarms.filter(alarm => alarm.id !== alarmId);
     await AsyncStorage.setItem(KEY, JSON.stringify(alarms));
     runInAction(() => {
       this.alarms = alarms;
