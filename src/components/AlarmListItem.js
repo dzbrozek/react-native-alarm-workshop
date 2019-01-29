@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ToastAndroid } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { inject } from 'mobx-react';
 
@@ -15,6 +15,8 @@ class AlarmListItem extends React.Component {
     const { alarms, alarm } = this.props;
     
     await alarms.removeAlarm(alarm.id);
+
+    ToastAndroid.show('Alarm has been removed', ToastAndroid.BOTTOM);
   };
   
   render() {
@@ -52,7 +54,7 @@ const styles = StyleSheet.create({
   name: {
     color: 'grey',
     flexGrow: 1,
-    fontSize: 14,
+    fontSize: 16,
   }
 });
 

@@ -3,7 +3,7 @@ import { AsyncStorage } from 'react-native';
 
 const KEY = 'ALARMS';
 
-export class AlarmStore {
+export class AlarmsStore {
   @observable alarms = [];
 
   constructor() {
@@ -45,4 +45,4 @@ export class AlarmStore {
   }
 }
 
-export default new AlarmStore();
+export default new AlarmsStore();

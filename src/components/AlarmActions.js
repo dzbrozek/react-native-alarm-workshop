@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import AlarmActionTile from './AlarmActionTile';
 import { SMS } from 'expo';
 
@@ -9,14 +9,43 @@ export default class AlarmActions extends React.Component {
   };
 
   render() {
+    const { alarm: { phoneNumber, password} } = this.props;
     const disabled = !this.state.isAvailable;
 
     return (
       <View style={styles.container}>
-        <AlarmActionTile icon="lock" title="ARM" phoneNumber="697142088" code="1" password="4321" disabled={disabled}/>
-        <AlarmActionTile icon="unlock" title="DISARM" phoneNumber="697142088" code="2" password="4321" disabled={disabled}/>
-        <AlarmActionTile icon="home" title="STAY ARM" phoneNumber="697142088" code="3" password="4321" disabled={disabled}/>
-        <AlarmActionTile icon="bell" title="PANIC" phoneNumber="697142088" code="4" password="4321" disabled={disabled}/>
+        <AlarmActionTile
+          icon="lock"
+          title="ARM"
+          phoneNumber={phoneNumber}
+          code="1"
+          password={password}
+          disabled={disabled}
+        />
+        <AlarmActionTile
+          icon="unlock"
+          title="DISARM"
+          phoneNumber={phoneNumber}
+          code="2"
+          password={password}
+          disabled={disabled}
+        />
+        <AlarmActionTile
+          icon="home"
+          title="STAY ARM"
+          phoneNumber={phoneNumber}
+          code="3"
+          password={password}
+          disabled={disabled}
+        />
+        <AlarmActionTile
+          icon="bell"
+          title="PANIC"
+          phoneNumber={phoneNumber}
+          code="4"
+          password={password}
+          disabled={disabled}
+        />
       </View>
     )
   }
@@ -31,7 +60,7 @@ export default class AlarmActions extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: 10,
+    margin: 10,
     flexDirection: 'row',
     flexWrap: 'wrap',
   },

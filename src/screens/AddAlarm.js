@@ -1,19 +1,20 @@
 import React from 'react';
-import { KeyboardAvoidingView, StyleSheet, View } from 'react-native';
+import { KeyboardAvoidingView, ScrollView, StyleSheet, View } from 'react-native';
 import FormInput from '../components/FormInput';
 import Button from '../components/Button';
 import AlarmHeader from '../components/AlarmHeader';
 import { inject } from 'mobx-react';
+import {ToastAndroid} from 'react-native';
 
 @inject('alarms')
 class AddAlarm extends React.Component {
   static navigationOptions = {
-    title: 'Add alarm'
+    title: 'Create alarm'
   };
   
   state = {
-    phoneNumber: '',
     name: '',
+    phoneNumber: '',
     password: '',
   };
   
@@ -26,46 +27,57 @@ class AddAlarm extends React.Component {
     });
     
     navigation.navigate('AlarmList');
+
+    ToastAndroid.show('A new alarm has been added', ToastAndroid.BOTTOM);
   };
   
   render() {
     const { phoneNumber, name, password } = this.state;
     
     return (
-      <KeyboardAvoidingView behavior="padding" enabled>
-        <AlarmHeader title="Add alarm" image={require('../../assets/add.png')}/>
-        
-        <View style={styles.formContainer}>
-          <FormInput
-            placeholder="Name"
-            value={name}
-            onChangeText={(text) => this.setState({name: text})}
-          />
-          
-          <FormInput
-            placeholder="Phone number"
-            value={phoneNumber}
-            keyboardType="phone-pad"
-            onChangeText={(text) => this.setState({phoneNumber: text})}
-          />
-          
-          <FormInput
-            placeholder="Password"
-            value={password}
-            secureTextEntry={true}
-            onChangeText={(text) => this.setState({password: text})}
-          />
-          
-          <Button title="Add" disabled={!(phoneNumber && name && password)} onPress={this.submitForm}/>
-        </View>
-      </KeyboardAvoidingView>
+      <ScrollView>
+        <KeyboardAvoidingView behavior="position">
+          <AlarmHeader title="Create alarm" image={require('../../assets/add.png')}/>
+
+          <View style={styles.formContainer}>
+            <FormInput
+              icon="home"
+              placeholder="Name"
+              value={name}
+              onChangeText={(text) => this.setState({name: text})}
+            />
+
+            <FormInput
+              icon="phone"
+              placeholder="Phone number"
+              value={phoneNumber}
+              keyboardType="phone-pad"
+              onChangeText={(text) => this.setState({phoneNumber: text})}
+            />
+
+            <FormInput
+              icon="key"
+              placeholder="Password"
+              value={password}
+              secureTextEntry={true}
+              onChangeText={(text) => this.setState({password: text})}
+            />
+
+            <Button title="ADD" disabled={!(phoneNumber && name && password)} onPress={this.submitForm} style={styles.button}/>
+          </View>
+        </KeyboardAvoidingView>
+      </ScrollView>
     )
   }
 }
 
 const styles = StyleSheet.create({
   formContainer: {
-    padding: 10,
+    marginHorizontal: 10,
+    marginVertical: 20,
+  },
+  button: {
+    marginTop: 20,
   }
 });
 

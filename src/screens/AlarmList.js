@@ -10,7 +10,7 @@ import { observer, inject } from 'mobx-react';
 @observer
 class AlarmList extends React.Component {
   static navigationOptions = {
-    title: 'Alarms'
+    title: 'My Alarms'
   };
   
   addAlarm = () => {
@@ -23,7 +23,7 @@ class AlarmList extends React.Component {
       <ScrollView>
         <AlarmHeader title="My Alarms" image={require('../../assets/alarms.png')}/>
         
-        <View style={styles.itemList}>
+        <View style={styles.actionList}>
           <FlatList
             data={alarms.alarms}
             keyExtractor={(item) => String(item.id)}
@@ -31,7 +31,7 @@ class AlarmList extends React.Component {
             renderItem={({item}) => <AlarmListItem alarm={item} navigation={navigation}/>}
           />
           
-          <Button title="ADD NEW ALARM" onPress={this.addAlarm} style={styles.button}/>
+          <Button title="CREATE NEW" onPress={this.addAlarm} style={styles.button}/>
         </View>
       </ScrollView>
     )
@@ -39,11 +39,12 @@ class AlarmList extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  itemList: {
+  actionList: {
     margin: 10,
+    marginVertical: 20,
   },
   button: {
-    marginTop: 20,
+    marginVertical: 20,
   }
 });
 

@@ -1,11 +1,15 @@
 import React from 'react';
-import { Text, TextInput, View, StyleSheet } from 'react-native';
+import { TextInput, View, StyleSheet } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
 
 class FormInput extends React.Component {
   render() {
+    const { icon, ...inputProps } = this.props;
+
     return (
       <View style={styles.container}>
-        <TextInput {...this.props} style={styles.input}/>
+        <FontAwesome name={icon} size={22} style={styles.icon}/>
+        <TextInput {...inputProps} style={styles.input}/>
       </View>
     )
   }
@@ -22,8 +26,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 6,
   },
+  icon: {
+    marginRight: 10,
+    color: 'green',
+  },
   input: {
-    fontSize: 16,
+    fontSize: 18,
+    paddingVertical: 3,
     width: '100%',
   }
 });
