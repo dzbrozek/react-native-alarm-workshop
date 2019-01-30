@@ -6,30 +6,19 @@ const KEY = 'ALARMS';
 export class AlarmsStore {
   @observable alarms = [];
 
-  constructor() {
-    this.loadAlarms();
-  }
-
   @action
   async loadAlarms() {
-    try {
-      const key = await AsyncStorage.getItem(KEY);
-      if (!key) {
-        return;
-      }
+    const alarms = [];
 
-      runInAction(() => {
-        this.alarms = JSON.parse(key);
-      });
-    } catch (e) {
-      console.error(e);
-    }
+    runInAction(() => {
+      this.alarms = alarms;
+    });
   }
 
   @action
   async addAlarm(alarm) {
-    const alarms = [...this.alarms, alarm];
-    await AsyncStorage.setItem(KEY, JSON.stringify(alarms));
+    const alarms = [];
+
     runInAction(() => {
       this.alarms = alarms;
     });
@@ -37,8 +26,8 @@ export class AlarmsStore {
 
   @action
   async removeAlarm(alarmId) {
-    const alarms = this.alarms.filter(alarm => alarm.id !== alarmId);
-    await AsyncStorage.setItem(KEY, JSON.stringify(alarms));
+    const alarms = [];
+
     runInAction(() => {
       this.alarms = alarms;
     });
