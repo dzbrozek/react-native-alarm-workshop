@@ -1,7 +1,6 @@
 import { action, observable, runInAction } from 'mobx';
 import { AsyncStorage } from 'react-native';
 
-const KEY = 'ALARMS';
 
 export class AlarmsStore {
   @observable alarms = [];
