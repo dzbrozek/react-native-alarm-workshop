@@ -19,16 +19,10 @@ class AddAlarm extends React.Component {
   };
   
   submitForm = async () => {
-    const { alarms, navigation } = this.props;
-    
-    await alarms.addAlarm({
-      ...this.state,
-      id: new Date().getTime(),
-    });
-    
-    navigation.navigate('AlarmList');
+    const { name, phoneNumber, password } = this.state;
 
-    ToastAndroid.show('A new alarm has been added', ToastAndroid.BOTTOM);
+    const details = `Name: ${name} Number: ${phoneNumber} Password: ${password}`;
+    ToastAndroid.show(`A new alarm has been added. ${details}`, ToastAndroid.BOTTOM);
   };
   
   render() {
@@ -40,30 +34,13 @@ class AddAlarm extends React.Component {
           <AlarmHeader title="Create alarm" image={require('../../assets/add.png')}/>
 
           <View style={styles.formContainer}>
-            <FormInput
-              icon="home"
-              placeholder="Name"
-              value={name}
-              onChangeText={(text) => this.setState({name: text})}
-            />
+            <FormInput/>
 
-            <FormInput
-              icon="phone"
-              placeholder="Phone number"
-              value={phoneNumber}
-              keyboardType="phone-pad"
-              onChangeText={(text) => this.setState({phoneNumber: text})}
-            />
+            <FormInput/>
 
-            <FormInput
-              icon="key"
-              placeholder="Password"
-              value={password}
-              secureTextEntry={true}
-              onChangeText={(text) => this.setState({password: text})}
-            />
+            <FormInput/>
 
-            <Button title="ADD" disabled={!(phoneNumber && name && password)} onPress={this.submitForm} style={styles.button}/>
+            <Button/>
           </View>
         </KeyboardAvoidingView>
       </ScrollView>
@@ -76,9 +53,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     marginVertical: 20,
   },
-  button: {
-    marginTop: 20,
-  }
 });
 
 export default AddAlarm;
