@@ -19,14 +19,12 @@ class AddAlarm extends React.Component {
   };
   
   submitForm = async () => {
-    const { alarms, navigation } = this.props;
+    const { alarms } = this.props;
     
     await alarms.addAlarm({
       ...this.state,
       id: new Date().getTime(),
     });
-    
-    navigation.navigate('AlarmList');
 
     ToastAndroid.show('A new alarm has been added', ToastAndroid.BOTTOM);
   };

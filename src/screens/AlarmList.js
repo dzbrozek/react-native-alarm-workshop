@@ -12,13 +12,9 @@ class AlarmList extends React.Component {
   static navigationOptions = {
     title: 'My Alarms'
   };
-  
-  addAlarm = () => {
-    this.props.navigation.navigate('AddAlarm');
-  };
-  
+
   render() {
-    const { navigation, alarms } = this.props;
+    const { alarms } = this.props;
     return (
       <ScrollView>
         <AlarmHeader title="My Alarms" image={require('../../assets/alarms.png')}/>
@@ -28,10 +24,10 @@ class AlarmList extends React.Component {
             data={alarms.alarms}
             keyExtractor={(item) => String(item.id)}
             ListEmptyComponent={<EmptyAlarmList/>}
-            renderItem={({item}) => <AlarmListItem alarm={item} navigation={navigation}/>}
+            renderItem={({item}) => <AlarmListItem alarm={item}/>}
           />
           
-          <Button title="CREATE NEW" onPress={this.addAlarm} style={styles.button}/>
+          <Button title="CREATE NEW" style={styles.button}/>
         </View>
       </ScrollView>
     )

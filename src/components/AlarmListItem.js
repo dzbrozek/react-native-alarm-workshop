@@ -5,12 +5,6 @@ import { inject } from 'mobx-react';
 
 @inject('alarms')
 class AlarmListItem extends React.Component {
-  onPress = () => {
-    const { navigation, alarm } = this.props;
-    
-    navigation.navigate('AlarmDetails', {alarm})
-  };
-  
   onLongPress = async () => {
     const { alarms, alarm } = this.props;
     
@@ -23,7 +17,7 @@ class AlarmListItem extends React.Component {
     const { alarm: { name } } = this.props;
     
     return (
-      <TouchableOpacity onPress={this.onPress} onLongPress={this.onLongPress}>
+      <TouchableOpacity onLongPress={this.onLongPress}>
         <View style={styles.container}>
           <FontAwesome name="lock" size={28} style={styles.alarmIcon}/>
           <Text numberOfLines={1} style={styles.name}>{ name }</Text>
