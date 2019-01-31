@@ -7,12 +7,8 @@ export default class AlarmActionTile extends React.Component {
     const { icon, title } = this.props;
     return (
       <View>
-        <View>
-          <View>
-            <FontAwesome name={icon} size={30}/>
-          </View>
-          <Text numberOfLines={1}>{title}</Text>
-        </View>
+        <FontAwesome name={icon} size={30}/>
+        <Text>{title}</Text>
       </View>
     )
   }

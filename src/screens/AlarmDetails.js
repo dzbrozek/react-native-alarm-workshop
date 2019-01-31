@@ -10,7 +10,7 @@ class AlarmDetails extends React.Component {
   render() {
     return (
       <ScrollView style={{paddingTop: STATUSBAR_HEIGHT}}>
-        <AlarmHeader/>
+        <AlarmHeader title="Home"/>
         
         <AlarmActions/>
       </ScrollView>
