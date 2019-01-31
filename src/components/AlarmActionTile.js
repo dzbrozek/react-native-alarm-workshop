@@ -4,27 +4,20 @@ import { FontAwesome } from '@expo/vector-icons';
 import { SMS } from 'expo';
 
 class AlarmActionTile extends React.Component {
-  sendSMS = async () => {
-    const { phoneNumber, code, password } = this.props;
-    await SMS.sendSMSAsync([phoneNumber], `${password}#${code}`);
-  };
-
   render() {
-    const { icon, title, disabled } = this.props;
+    const { icon, title } = this.props;
     return (
       <View style={styles.container}>
-        <TouchableOpacity
-          onPress={this.sendSMS}
-          style={[styles.tile, disabled && {borderColor: 'grey'}]}
-          disabled={disabled}
+        <View
+          style={styles.tile}
         >
           <View style={styles.content}>
-            <View style={[styles.iconContainer, disabled && {backgroundColor: 'grey'}]}>
+            <View style={[styles.iconContainer]}>
               <FontAwesome name={icon} size={30} style={styles.icon}/>
             </View>
-            <Text numberOfLines={1} style={[styles.title, disabled && {color: 'grey'}]}>{title}</Text>
+            <Text numberOfLines={1} style={[styles.title]}>{title}</Text>
           </View>
-        </TouchableOpacity>
+        </View>
       </View>
     )
   }
